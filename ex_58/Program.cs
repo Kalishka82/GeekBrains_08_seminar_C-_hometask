@@ -40,20 +40,21 @@ int[,] MatrixMatrixMultiplication(int[,] matrix1, int[,] matrix2)
     int[,] matrixResult = new int[matrix1.GetLength(0), matrix2.GetLength(1)];
     for (int i = 0; i < matrixResult.GetLength(0); i++)
     {
-        // Console.Write($"i = {i} ");
         for (int j = 0; j < matrixResult.GetLength(1); j++)
         {
-            // Console.Write($"j = {j} ");
             matrixResult[i, j] = 0;
 
             for (int k = 0; k < matrix1.GetLength(1); k++)
             {
-                // Console.WriteLine($"k = {k} ");
                 int mult = matrix1[i, k] * matrix2[k, j];
                 matrixResult[i, j] = matrixResult[i, j] + mult;
-                // Console.WriteLine($"{mult}, {matrixResult[i,j]}");
             }
         }
     }
     return matrixResult;
 }
+
+// if (matrix1.GetLength(1) != matrix2.GetLength(0))  // охранник
+//     {
+//         throw new Exception ("Нельзя умножать такие матрицы");
+//     }
